@@ -1,0 +1,135 @@
+{
+  "scenarios": [
+    {
+      "id": "3way-budget-conflict",
+      "name": "3-Way Budget Conflict",
+      "description": "CRM says Approved (90d old), Email says Freeze (7d old), Debrief says Resolved Today",
+      "transcript": "Budget resolved today, we got approval from finance team this morning",
+      "expectedOutcome": {
+        "field": "budget_status",
+        "proposed": "Resolved Today",
+        "confidence": ">0.80",
+        "status": "auto_applied",
+        "conflictsDetected": 3
+      }
+    },
+    {
+      "id": "name-disambiguation",
+      "name": "Decision Maker Name Disambiguation", 
+      "description": "CRM has Mark Delaney (90d old), Email mentions David Chan (5d old), Debrief spells David Chen",
+      "transcript": "New decision maker David Chen—C-H-E-N, he's taking over from Mark",
+      "expectedOutcome": {
+        "field": "decision_maker",
+        "proposed": "David Chen",
+        "confidence": "0.70-0.90",
+        "status": "staged",
+        "conflictsDetected": 3
+      }
+    },
+    {
+      "id": "timezone-normalization",
+      "name": "Timezone Date Normalization",
+      "description": "Relative time 'this Friday 5pm' should normalize to absolute ET timestamp",
+      "transcript": "Proposal due this Friday 5pm, make sure we hit that deadline",
+      "expectedOutcome": {
+        "field": "next_meeting",
+        "proposed": "2025-09-19T17:00:00-04:00",
+        "confidence": ">0.80",
+        "status": "auto_applied",
+        "displayAs": "Fri Sep 19, 2025 5:00 PM ET"
+      }
+    },
+    {
+      "id": "homophone-trap",
+      "name": "Homophone Disambiguation",
+      "description": "ASR might hear 'Frieda' instead of 'Friday' - context should resolve correctly",
+      "transcript": "Follow up with them on Frieda about the contract terms",
+      "expectedOutcome": {
+        "field": "tasks",
+        "proposed": "Follow up on Friday about contract terms",
+        "confidence": ">0.75",
+        "status": "auto_applied",
+        "note": "Context-based homophone resolution"
+      }
+    },
+    {
+      "id": "missing-referent",
+      "name": "Missing Pronoun Referent",
+      "description": "Ambiguous 'them' reference should be staged for clarification",
+      "transcript": "Follow up with them about the pricing discussion",
+      "expectedOutcome": {
+        "field": "tasks",
+        "proposed": "Follow up with [unclear referent] about pricing",
+        "confidence": "<0.50",
+        "status": "blocked",
+        "blockingReason": "Ambiguous pronoun reference"
+      }
+    },
+    {
+      "id": "low-asr-confidence",
+      "name": "Low ASR Confidence Fallback",
+      "description": "Background noise causes low ASR confidence, should stage outcome",
+      "transcript": "[noisy/unclear audio] budget... approved... maybe next week",
+      "expectedOutcome": {
+        "field": "budget_status",
+        "proposed": "Approved",
+        "confidence": "<0.60",
+        "status": "staged",
+        "note": "Low ASR confidence - staged for review"
+      }
+    },
+    {
+      "id": "agreement-boost",
+      "name": "Agreement Boost Scenario",
+      "description": "Multiple recent sources agree, should get confidence boost",
+      "transcript": "David Chen confirmed as new DM, same person mentioned in yesterday's email",
+      "sources": [
+        {
+          "type": "email",
+          "value": "David Chen",
+          "timestamp": "2025-09-13T10:00:00-04:00",
+          "evidence": "Recent email thread"
+        },
+        {
+          "type": "debrief", 
+          "value": "David Chen",
+          "timestamp": "2025-09-14T09:00:00-04:00",
+          "evidence": "Voice confirmation"
+        }
+      ],
+      "expectedOutcome": {
+        "confidence": ">0.85",
+        "agreementBoost": true,
+        "status": "staged"
+      }
+    },
+    {
+      "id": "sparse-crm",
+      "name": "Sparse CRM Data",
+      "description": "Almost empty CRM, policy should proceed with low priors",
+      "crmData": {
+        "account": "Acme Corp",
+        "opportunity": {},
+        "lastUpdate": "2024-01-15T00:00:00-05:00"
+      },
+      "transcript": "First meeting with Acme Corp, budget is 500K, decision maker is Sarah Johnson—J-O-H-N-S-O-N",
+      "expectedOutcome": {
+        "conflictsDetected": 0,
+        "autoResolved": 3,
+        "note": "New data with no conflicts"
+      }
+    }
+  ],
+  "demoFlow": {
+    "preFlightScenario": "3way-budget-conflict",
+    "mainScenario": "name-disambiguation", 
+    "fallbackScenarios": ["timezone-normalization", "agreement-boost"],
+    "totalDemoTime": "2-3 minutes",
+    "keyMetrics": {
+      "timeToInsight": "<10s",
+      "autonomousResolution": ">=66%",
+      "blockingPrompts": "<=1",
+      "precisionAtApply": "100%"
+    }
+  }
+}

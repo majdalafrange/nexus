@@ -1,0 +1,37 @@
+{
+  "account": "Axiom Labs (Demo Tenant)",
+  "timezone": "America/New_York",
+  "opportunity": {
+    "id": "OPP-1337",
+    "name": "Axiom Labs — Security Analytics Upgrade",
+    "stage": {
+      "value": "Evaluation",
+      "last_updated": "2025-06-16T09:50:53.093747"
+    },
+    "amount": {
+      "value": 120000,
+      "currency": "USD",
+      "last_updated": "2025-05-17T09:50:53.093769"
+    },
+    "budget_status": {
+      "value": "Approved",
+      "last_updated": "2025-06-16T09:50:53.093772"
+    },
+    "decision_maker": {
+      "value": "Mark Delaney",
+      "last_updated": "2025-06-16T09:50:53.093775"
+    },
+    "next_meeting": {
+      "value": null,
+      "last_updated": "2025-05-17T09:50:53.093778"
+    },
+    "tasks": [],
+    "notes": [
+      {
+        "source": "crm_note",
+        "text": "Mark is supportive; procurement in October",
+        "timestamp": "2025-06-11T09:50:53.093780"
+      }
+    ]
+  }
+}

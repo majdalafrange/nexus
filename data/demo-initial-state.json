@@ -1,0 +1,50 @@
+{
+  "onePager": {
+    "account": "Acme Corp",
+    "timezone": "America/New_York",
+    "budget_status": "Approved",
+    "decision_maker": "Mark Delaney",
+    "tasks": [],
+    "next_meeting": null,
+    "stage": "Discovery"
+  },
+  "proposed": [
+    {
+      "id": "budget-conflict-demo",
+      "field": "budget_status",
+      "proposed": "Freeze",
+      "confidence": 0.85,
+      "blast": "high",
+      "status": "staged",
+      "rule": "Recent email overrides stale CRM data",
+      "why": [
+        {
+          "type": "crm",
+          "value": "Approved",
+          "timestamp": "2024-06-15T10:00:00Z",
+          "evidence": "CRM budget field updated 90 days ago"
+        },
+        {
+          "type": "email",
+          "value": "Freeze",
+          "timestamp": "2024-09-07T14:30:00Z",
+          "evidence": "Email from finance: 'Budget freeze in effect until Q4 review'"
+        }
+      ],
+      "autoApplyAt": "2024-09-15T14:30:00Z",
+      "previous": "Approved"
+    }
+  ],
+  "audit": [],
+  "builderLog": {
+    "words": 0
+  },
+  "metrics": {
+    "conflictsDetected": 1,
+    "autoResolved": 0,
+    "staged": 1,
+    "blocked": 0,
+    "timeToInsight": 0,
+    "precisionAtApply": 0
+  }
+}
