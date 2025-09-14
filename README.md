@@ -1,8 +1,8 @@
-# Rox Nexus MVP
+# Nexus MVP
 
 **AI-powered sales deal intelligence with voice-driven conflict resolution**
 
-Rox Nexus automatically detects and resolves conflicts in your sales data using natural language processing, voice commands, and intelligent decision-making algorithms. Perfect for sales teams who need to maintain accurate deal information without manual overhead.
+Nexus automatically detects and resolves conflicts in your sales data using natural language processing, voice commands, and intelligent decision-making algorithms. Perfect for sales teams who need to maintain accurate deal information without manual overhead.
 
 ## 🚀 Quick Start
 
@@ -16,7 +16,7 @@ Rox Nexus automatically detects and resolves conflicts in your sales data using 
 1. **Clone and setup:**
 ```bash
 git clone <repository-url>
-cd rox-nexus
+cd -nexus
 ```
 
 2. **Backend setup:**
@@ -119,7 +119,7 @@ The application includes pre-seeded demo data for consistent presentations:
 ## 📁 Project Structure
 
 ```
-rox-nexus/
+-nexus/
 ├── backend/
 │   ├── src/
 │   │   ├── services/
@@ -156,11 +156,11 @@ rox-nexus/
 PORT=8787
 TIMEZONE=America/New_York
 CLAUDE_API_KEY=your_claude_key_here  # Optional
-WISPR_ENDPOINT=                      # Optional proxy endpoint
+WISPR_ENDPOINT=                      # Optional py endpoint
 ```
 
 **Frontend:**
-- Vite proxy automatically routes `/api/*` to backend
+- Vite py automatically routes `/api/*` to backend
 - No additional configuration required
 
 ## 🧪 API Endpoints
