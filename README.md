@@ -4,7 +4,6 @@
 
 Nexus automatically detects and resolves conflicts in your sales data using natural language processing, voice commands, and intelligent decision-making algorithms. Perfect for sales teams who need to maintain accurate deal information without manual overhead.
 
-## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+ 
@@ -39,7 +38,7 @@ npm run dev
 - Frontend: http://localhost:5173/
 - Backend API: http://localhost:8787/
 
-## 🎯 Key Features
+## Key Features
 
 ### Intelligent Conflict Resolution
 - **Automatic Detection**: Identifies conflicts between CRM, email, and voice data
@@ -59,7 +58,7 @@ npm run dev
 - **Precision Tracking**: Measures accuracy of auto-applied changes
 - **Actionable Insights**: AI-generated next steps and recommendations
 
-## 🎭 Demo Mode
+## Demo Mode
 
 The application includes pre-seeded demo data for consistent presentations:
 
@@ -81,10 +80,10 @@ The application includes pre-seeded demo data for consistent presentations:
    Say: "We need to send the proposal by Friday at 5pm"
    Then: "Bookmark that"
    ```
-   - Banner appears: "📌 Commitment bookmarked: Send proposal (Fri 5:00 PM ET)"
+   - Banner appears: "Commitment bookmarked: Send proposal (Fri 5:00 PM ET)"
 
 3. **Flow Debrief** (45 seconds)
-   - Click "📝 Debrief (Flow)" button
+   - Click "Debrief (Flow)" button
    - Dictate: *"Budget resolved today, we got final approval from finance this morning. New decision maker is David Chen—C-H-E-N—he's taking over from Mark. Proposal due this Friday 5pm Eastern. Add follow-up task for SOC2 compliance review Monday 9am."*
    - Watch real-time processing and conflict resolution
 
@@ -94,7 +93,7 @@ The application includes pre-seeded demo data for consistent presentations:
 - New tasks appear with proper due dates
 - Metrics show 100% Precision@Apply
 
-## 🏗️ Architecture
+## Architecture
 
 ### Backend (`/backend`)
 - **Express.js** API server
@@ -147,7 +146,7 @@ The application includes pre-seeded demo data for consistent presentations:
 └── README.md
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -163,7 +162,7 @@ WISPR_ENDPOINT=                      # Optional py endpoint
 - Vite py automatically routes `/api/*` to backend
 - No additional configuration required
 
-## 🧪 API Endpoints
+## API Endpoints
 
 ### Core Data
 - `GET /api/data` - Current deal state and proposed changes
@@ -178,7 +177,7 @@ WISPR_ENDPOINT=                      # Optional py endpoint
 - `POST /api/undo` - Undo last applied change
 - `GET /api/audit` - Full audit trail
 
-## 🎯 Success Metrics
+## Success Metrics
 
 The system tracks key performance indicators:
 
@@ -187,50 +186,4 @@ The system tracks key performance indicators:
 - **Autonomous Resolution**: Target >66% auto-resolved
 - **User Intervention**: Target <1 blocking prompt per session
 
-## 🚦 Development
 
-### Running Tests
-```bash
-# Backend
-cd backend && npm test
-
-# Frontend  
-cd frontend && npm test
-```
-
-### Building for Production
-```bash
-# Backend
-cd backend && npm run build
-
-# Frontend
-cd frontend && npm run build
-```
-
-### Code Style
-- **TypeScript** strict mode enabled
-- **ESLint** for code quality
-- **Prettier** for formatting
-
-## 📝 License
-
-MIT License - see LICENSE file for details
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📞 Support
-
-For questions or issues:
-- Create an issue in the repository
-- Check the demo script in `/backend/demo/demo-script.md`
-- Review the architecture documentation
-
----
-
-**Built for sales teams who value accuracy, speed, and intelligence in their deal management.**
